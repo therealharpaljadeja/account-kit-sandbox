@@ -65,7 +65,7 @@ export default function RainbowKitProvider({
                     signer: wagmiSigner.signer,
                     isLoggedIn: wagmiSigner.isLoggedIn,
                     login: wagmiSigner.login,
-                    logout: wagmiSigner.login,
+                    logout: wagmiSigner.logout,
                     scaAddress: wagmiSigner.scaAddress,
                 }}
             >
