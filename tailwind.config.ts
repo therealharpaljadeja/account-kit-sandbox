@@ -15,6 +15,7 @@ const config: Config = {
             colors: {
                 brand1: "#FF904A",
                 brand2: "#FE56B9",
+                brand2Disabled: "#731c65",
                 "brand2-100": "#ffbbe3",
             },
             fontFamily: {
@@ -22,6 +23,6 @@ const config: Config = {
             },
         },
     },
-    plugins: [],
+    plugins: [require("@headlessui/tailwindcss")({ prefix: "ui" })],
 };
 export default config;

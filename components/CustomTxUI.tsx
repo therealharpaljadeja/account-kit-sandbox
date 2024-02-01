@@ -28,18 +28,25 @@ export default function CustomTxUI({
     const [target, setTarget] = useState<Address>();
     const [data, setData] = useState<Hex>();
 
+    const [sendingTx, setSendingTx] = useState(false);
+
     async function handleSend() {
         if (provider)
             if (target && data) {
+                setSendingTx(true);
                 toast.promise(
                     sendTx(provider, target, data).then((result) => {
                         if (result) setUserOpHash(result.hash);
                     }),
                     {
                         loading: "Sending UserOperation",
-                        success: "UserOperation Sent!",
+                        success: () => {
+                            setSendingTx(false);
+                            return "UserOperation Sent!";
+                        },
                         error: (error) => {
                             console.log(error);
+                            setSendingTx(false);
                             return "Something went wrong, check console!";
                         },
                     }
@@ -65,12 +72,13 @@ export default function CustomTxUI({
                     </label>
                     <div className="mt-2.5">
                         <input
-                            className="block w-full rounded-md border-0 outline-none px-3.5 py-2 text-[#1b1b1f] shadow-sm ring-1 ring-inset ring-[#333] placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#333] sm:text-sm sm:leading-6"
+                            className="block w-full rounded-md border-0 outline-none px-3.5 py-2 disabled:opacity-75 text-[#1b1b1f] shadow-sm ring-1 ring-inset ring-[#333] placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#333] sm:text-sm sm:leading-6 "
                             type="text"
                             name="to-address"
                             id="to-address"
                             autoComplete="address"
                             placeholder="0x..."
+                            disabled={sendingTx}
                             onChange={({ target }) =>
                                 setTarget(target.value as Address)
                             }
@@ -86,12 +94,13 @@ export default function CustomTxUI({
                     </label>
                     <div className="mt-2.5">
                         <input
-                            className="block w-full rounded-md border-0 outline-none px-3.5 py-2 text-[#1b1b1f] shadow-sm ring-1 ring-inset ring-[#333] placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#333] sm:text-sm sm:leading-6"
+                            className="block w-full rounded-md border-0 outline-none px-3.5 py-2 disabled:opacity-75 text-[#1b1b1f] shadow-sm ring-1 ring-inset ring-[#333] placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#333] sm:text-sm sm:leading-6"
                             type="text"
                             name="data"
                             id="data"
                             autoComplete="address"
                             placeholder="0x..."
+                            disabled={sendingTx}
                             onChange={({ target }) =>
                                 setData(target.value as Address)
                             }
@@ -102,7 +111,8 @@ export default function CustomTxUI({
                     {isLoggedIn ? (
                         <button
                             onClick={handleSend}
-                            className="flex w-full justify-center rounded-md bg-brand2 px-3 py-3 text-md font-semibold leading-6 text-white shadow-sm hover:bg-brand2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand2"
+                            disabled={sendingTx}
+                            className="flex w-full justify-center rounded-md bg-brand2 disabled:bg-brand2Disabled disabled:cursor-not-allowed px-3 py-3 text-md font-semibold leading-6 text-white shadow-sm hover:bg-brand2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand2"
                         >
                             Send
                         </button>

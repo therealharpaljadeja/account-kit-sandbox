@@ -21,9 +21,7 @@ export default function Configuration() {
                     <Switch
                         checked={isPaymasterRequired}
                         onChange={setIsPaymasterRequired}
-                        className={`${
-                            isPaymasterRequired ? "bg-green-500" : "bg-red-500"
-                        } relative inline-flex h-6 w-11 items-center rounded-full`}
+                        className={`relative inline-flex ui-disabled:bg-gray-300 ui-checked:bg-green-500 ui-not-checked:bg-red-500 h-6 w-11 items-center rounded-full`}
                     >
                         <span className="sr-only">Enable notifications</span>
                         <span
