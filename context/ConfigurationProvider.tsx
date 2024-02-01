@@ -27,7 +27,7 @@ type ConfigurationContextValue = {
 
 export const SignerType = [
     { name: "Magic", image: "magic.svg" },
-    { name: "Metamask", image: "metamask.svg" },
+    { name: "Injected (using RainbowKit)", image: "rainbow.svg" },
     { name: "Web3Auth", image: "web3auth.svg", disabled: true },
 ];
 
