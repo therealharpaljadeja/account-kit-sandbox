@@ -1,6 +1,6 @@
 import ChainDropdown from "./ChainDropdown";
-import Container from "./Container";
-import ContainerTitle from "./ContainerTitle";
+import Container from "./ui/Container";
+import ContainerTitle from "./ui/ContainerTitle";
 import RPCURLInput from "./RPCURLInput";
 
 export default function AlchemyProviderConfiguration() {

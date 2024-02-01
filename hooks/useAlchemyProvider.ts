@@ -60,7 +60,6 @@ export default function useAlchemyProvider() {
             setProvider(
                 new AlchemyProvider({
                     chain,
-                    // rpcUrl: "https://eth-sepolia.g.alchemy.com/v2/2gl37ngLFKNeeZzMfRXepI4eFWEEFxyd",
                     rpcUrl,
                 })
             );

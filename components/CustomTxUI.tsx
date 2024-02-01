@@ -1,10 +1,13 @@
 import { Dispatch, SetStateAction, useContext, useState } from "react";
-import PreviewUIContainer from "./PreviewUIContainer";
+import PreviewUIContainer from "./ui/PreviewUIContainer";
 import { AlchemyProvider } from "@alchemy/aa-alchemy";
 import { Address, Hex } from "viem";
 import { AlchemyProviderContext } from "@/context/AlchemyProviderProvider";
 import { SignerContext } from "@/context/SelectedSignerProvider";
 import toast from "react-hot-toast";
+import CustomInput from "./ui/CustomInput";
+import CustomInputGroup from "./ui/CustomInputGroup";
+import Label from "./ui/Label";
 
 export async function sendTx(
     provider: AlchemyProvider,
@@ -63,50 +66,32 @@ export default function CustomTxUI({
                 <img src="/logos/tx-logo.png" className="h-44 w-44" />
             </div>
             <div className="space-y-4">
-                <div className="w-full space-y-2">
-                    <label
-                        htmlFor="to-address"
-                        className="block text-sm font-semibold leading-6 text-white"
-                    >
-                        To
-                    </label>
-                    <div className="mt-2.5">
-                        <input
-                            className="block w-full rounded-md border-0 outline-none px-3.5 py-2 disabled:opacity-75 text-[#1b1b1f] shadow-sm ring-1 ring-inset ring-[#333] placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#333] sm:text-sm sm:leading-6 "
-                            type="text"
-                            name="to-address"
-                            id="to-address"
-                            autoComplete="address"
-                            placeholder="0x..."
-                            disabled={sendingTx}
-                            onChange={({ target }) =>
-                                setTarget(target.value as Address)
-                            }
-                        />
-                    </div>
-                </div>
-                <div className="w-full space-y-2">
-                    <label
-                        htmlFor="data"
-                        className="block text-sm font-semibold leading-6 text-white"
-                    >
-                        Data
-                    </label>
-                    <div className="mt-2.5">
-                        <input
-                            className="block w-full rounded-md border-0 outline-none px-3.5 py-2 disabled:opacity-75 text-[#1b1b1f] shadow-sm ring-1 ring-inset ring-[#333] placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#333] sm:text-sm sm:leading-6"
-                            type="text"
-                            name="data"
-                            id="data"
-                            autoComplete="address"
-                            placeholder="0x..."
-                            disabled={sendingTx}
-                            onChange={({ target }) =>
-                                setData(target.value as Address)
-                            }
-                        />
-                    </div>
-                </div>
+                <CustomInputGroup>
+                    <Label htmlFor="to-address">To</Label>
+                    <CustomInput
+                        name="to-address"
+                        id="to-address"
+                        autoComplete="address"
+                        placeholder="0x..."
+                        disabled={sendingTx || !isLoggedIn}
+                        onChange={({ target }) =>
+                            setTarget(target.value as Address)
+                        }
+                    />
+                </CustomInputGroup>
+                <CustomInputGroup>
+                    <Label htmlFor="data">Data</Label>
+                    <CustomInput
+                        name="data"
+                        id="data"
+                        autoComplete="address"
+                        placeholder="0x..."
+                        disabled={sendingTx || !isLoggedIn}
+                        onChange={({ target }) =>
+                            setData(target.value as Address)
+                        }
+                    />
+                </CustomInputGroup>
                 <div className="">
                     {isLoggedIn ? (
                         <button

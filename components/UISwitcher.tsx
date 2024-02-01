@@ -1,5 +1,5 @@
 import { Switch } from "@headlessui/react";
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction } from "react";
 
 export default function UISwitcher({
     setShowCustomTxUI,

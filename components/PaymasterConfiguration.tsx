@@ -1,6 +1,6 @@
 import { ChangeEvent, useContext } from "react";
-import Container from "./Container";
-import ContainerTitle from "./ContainerTitle";
+import Container from "./ui/Container";
+import ContainerTitle from "./ui/ContainerTitle";
 import { AlchemyProviderContext } from "@/context/AlchemyProviderProvider";
 
 export default function PaymasterConfiguration() {

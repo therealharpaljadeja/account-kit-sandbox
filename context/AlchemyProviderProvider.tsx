@@ -12,7 +12,6 @@ import {
 } from "react";
 import { HttpTransport } from "viem";
 import { ConfigurationContext } from "./ConfigurationProvider";
-import { WalletClient } from "wagmi";
 
 type AlchemyProviderContextValue = {
     provider?: AlchemyProvider;

@@ -1,18 +1,18 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import MintTokenUI from "./MintTokenUI";
 import UISwitcher from "./UISwitcher";
 import CustomTxUI from "./CustomTxUI";
 import SmartAccountDetailsUI from "./SmartAccountDetailsUI";
 import Link from "next/link";
+import { ConfigurationContext } from "@/context/ConfigurationProvider";
 
-export default function Preview({
-    isAllConfigurationAvailable,
-}: {
-    isAllConfigurationAvailable: boolean;
-}) {
+export default function Preview() {
     const [showCustomTxUI, setShowCustomTxUI] = useState(false);
     const [userOpHash, setUserOpHash] = useState("");
 
+    const { isAllConfigurationAvailable } = useContext(ConfigurationContext);
+
+    // Timeout to remove userOpHash from the UI
     useEffect(() => {
         let timeoutId: NodeJS.Timeout;
         if (userOpHash) {

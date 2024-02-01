@@ -1,10 +1,16 @@
 import { Dispatch, SetStateAction, useContext, useState } from "react";
-import PreviewUIContainer from "./PreviewUIContainer";
+import PreviewUIContainer from "./ui/PreviewUIContainer";
 import { sendTx } from "./CustomTxUI";
 import { Address, Hex } from "viem";
 import { AlchemyProviderContext } from "@/context/AlchemyProviderProvider";
 import { SignerContext } from "@/context/SelectedSignerProvider";
-import toast, { useToasterStore } from "react-hot-toast";
+import toast from "react-hot-toast";
+
+// Mint tokens to the connected Smart Account.
+const mintTx = {
+    target: "0x54571Bee711bf03269f65D379fDE3ff078d6F786" as Address,
+    data: "0x6a6278420000000000000000000000000f06d15f909d9473a2d09fefa99e5ae7c7a962c4" as Hex,
+};
 
 export default function MintTokenUI({
     setUserOpHash,
@@ -19,12 +25,8 @@ export default function MintTokenUI({
     async function mintToken() {
         setSendingTx(true);
         if (provider) {
-            let data =
-                "0x6a6278420000000000000000000000000f06d15f909d9473a2d09fefa99e5ae7c7a962c4" as Hex;
-            let target =
-                "0x54571Bee711bf03269f65D379fDE3ff078d6F786" as Address;
             toast.promise(
-                sendTx(provider, target, data).then((result) => {
+                sendTx(provider, mintTx.target, mintTx.data).then((result) => {
                     if (result) {
                         setUserOpHash(result.hash);
                     }

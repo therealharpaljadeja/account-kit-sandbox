@@ -6,7 +6,6 @@ export default function RainbowKitSignerConfiguration() {
             <h3 className="text-black text-sm">RainbowKit Signer</h3>
             <div className="w-full">
                 <ConnectButton />
-                <div className="mt-2.5"></div>
             </div>
         </div>
     );
