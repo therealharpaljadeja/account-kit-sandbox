@@ -23,7 +23,6 @@ export default function useAlchemyProvider() {
     const connectSignerToProvider = useCallback(
         (signer: SmartAccountSigner) => {
             if (provider) {
-                console.log(provider, signer);
                 try {
                     const connectedProvider = provider.connect((rpcClient) => {
                         return new LightSmartContractAccount({
