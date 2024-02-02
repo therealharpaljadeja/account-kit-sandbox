@@ -5,7 +5,10 @@ export default function Document() {
         <Html lang="en">
             <Head>
                 <link rel="shortcut icon" href="/logos/tx-logo.png" />
-                <meta property="og:image" content="/ogimage.png" />
+                <meta
+                    property="og:image"
+                    content="https://i.ibb.co/NC46Hsc/Screenshot-2024-02-03-at-12-16-44-AM.png"
+                />
                 <meta property="og:title" content="Account Kit Sandbox" />
                 <meta
                     property="og:description"
@@ -15,6 +18,7 @@ export default function Document() {
                     property="og:url"
                     content="https://account-kit-sandbox.vercel.app/"
                 />
+                <title>Account Kit Sandbox</title>
             </Head>
             <body>
                 <Main />
