@@ -1,4 +1,5 @@
 import { Switch } from "@headlessui/react";
+import Link from "next/link";
 import { Dispatch, SetStateAction } from "react";
 
 export default function UISwitcher({
@@ -10,7 +11,14 @@ export default function UISwitcher({
 }) {
     return (
         <div className="flex justify-center space-x-2">
-            <h4 className="text-black">Mint Token</h4>
+            <div className="flex space-x-2 items-center">
+                <Link
+                    href="https://github.com/therealharpaljadeja/account-kit-sandbox/blob/main/components/MintTokenUI.tsx"
+                    target="_blank"
+                >
+                    <h4 className="text-black underline">Mint Token</h4>
+                </Link>
+            </div>
             <Switch
                 checked={showCustomTxUI}
                 onChange={setShowCustomTxUI}
@@ -25,7 +33,14 @@ export default function UISwitcher({
                     } inline-block h-4 w-4 transform rounded-full bg-white transition`}
                 />
             </Switch>
-            <h4 className="text-black">Custom Tx</h4>
+            <div className="flex items-center space-x-2">
+                <Link
+                    href="https://github.com/therealharpaljadeja/account-kit-sandbox/blob/main/components/CustomTxUI.tsx"
+                    target="_blank"
+                >
+                    <h4 className="text-black underline">Custom Tx</h4>
+                </Link>
+            </div>
         </div>
     );
 }

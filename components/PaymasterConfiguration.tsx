@@ -2,6 +2,7 @@ import { ChangeEvent, useContext } from "react";
 import Container from "./ui/Container";
 import ContainerTitle from "./ui/ContainerTitle";
 import { AlchemyProviderContext } from "@/context/AlchemyProviderProvider";
+import Link from "next/link";
 
 export default function PaymasterConfiguration() {
     const { policyId, setPolicyId } = useContext(AlchemyProviderContext);
@@ -20,7 +21,17 @@ export default function PaymasterConfiguration() {
 
     return (
         <Container>
-            <ContainerTitle>Alchemy Paymaster</ContainerTitle>
+            <div className="flex items-center space-x-2">
+                <ContainerTitle>Alchemy Paymaster</ContainerTitle>
+                <Link
+                    href="https://github.com/therealharpaljadeja/account-kit-sandbox/blob/3ef3e2fabd95785cb432df68c30b52e493b3861e/hooks/useAlchemyProvider.ts#L70"
+                    target="_blank"
+                >
+                    <h3 className="text-black text-sm underline">
+                        (Code Here)
+                    </h3>
+                </Link>
+            </div>
             <div className="w-full">
                 <label
                     htmlFor="paymaster-policy-id"

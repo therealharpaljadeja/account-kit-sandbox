@@ -1,4 +1,5 @@
 import { SignerContext } from "@/context/SelectedSignerProvider";
+import Link from "next/link";
 import { ChangeEvent, useContext } from "react";
 
 export default function MagicSignerConfiguration() {
@@ -18,7 +19,17 @@ export default function MagicSignerConfiguration() {
 
     return (
         <div className="flex flex-col space-y-2">
-            <h3 className="text-black text-sm">Magic Signer</h3>
+            <div className="flex space-x-2">
+                <h3 className="text-black text-sm">Magic Signer</h3>
+                <Link
+                    href="https://github.com/therealharpaljadeja/account-kit-sandbox/blob/main/hooks/useMagicSigner.ts"
+                    target="_blank"
+                >
+                    <h3 className="underline text-black text-sm">
+                        (Code Here)
+                    </h3>
+                </Link>
+            </div>
             <div className="w-full">
                 <label
                     htmlFor="magic-api-key"
